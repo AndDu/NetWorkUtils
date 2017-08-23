@@ -31,7 +31,7 @@ public abstract class BaseNetworkController implements NetworkController {
     private NetworkClientCallback mNetworkClientCallback;
     private String mRequestType;
     private boolean isConnectEffectived;
-    //totototo
+    //to
     private String requestUrl;
     private HttpURLConnection urlConnection;
     private OutputStream serverOutputStream;
