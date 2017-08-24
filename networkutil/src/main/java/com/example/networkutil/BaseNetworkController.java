@@ -123,7 +123,7 @@ public abstract class BaseNetworkController implements NetworkController {
             serverOutputStream = urlConnection.getOutputStream();
             uploadPostContent(serverOutputStream);  //j加载上传的
             serverOutputStream.flush();
-            CloseUtil.close(serverOutputStream);
+            CloseStreamUtil.close(serverOutputStream);
         }
 
     }
@@ -165,7 +165,7 @@ public abstract class BaseNetworkController implements NetworkController {
             urlConnection.disconnect();
             Log.d("network","中断 http 连接");
         }
-        CloseUtil.close(serverOutputStream);
+        CloseStreamUtil.close(serverOutputStream);
         if (serverOutputStream!=null){
             Log.d("network","中断 http serverOutputStream");
         }
@@ -177,10 +177,10 @@ public abstract class BaseNetworkController implements NetworkController {
         if (urlConnection!=null){
             urlConnection.disconnect();
         }
-        CloseUtil.close(byteArrayOutputStream);
-        CloseUtil.close(fileWrite);
-        CloseUtil.close(inputStream);
-        CloseUtil.close(serverOutputStream);
+        CloseStreamUtil.close(byteArrayOutputStream);
+        CloseStreamUtil.close(fileWrite);
+        CloseStreamUtil.close(inputStream);
+        CloseStreamUtil.close(serverOutputStream);
     }
 
     @Override
