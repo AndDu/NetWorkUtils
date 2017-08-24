@@ -59,6 +59,7 @@ public abstract class BaseNetworkController implements NetworkController {
 
     @Override
     public NetworkClientCallback getNetworkCallback() {
+
         return mNetworkClientCallback;
     }
 
