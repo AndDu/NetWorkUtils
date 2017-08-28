@@ -85,7 +85,6 @@ public class UploadMultipartController implements NetworkController {
         urlConnection.setRequestProperty("Content-Type", CONTENT_TYPE + ";boundary=" + BOUNDARY);
 
         DataOutputStream dos = new DataOutputStream(urlConnection.getOutputStream());
-
         StringBuilder builder = new StringBuilder();
 
         for (Map.Entry<String, String> entry : mParams.entrySet()) {//????
@@ -139,7 +138,30 @@ public class UploadMultipartController implements NetworkController {
             } else if (annexType.equals(Annex.TYPE_BITMAP)) {
                 dos.write(builder.toString().getBytes());
                 Bitmap bitmap = (Bitmap) annex.value;
-
+                ByteArrayOutputStream out = new ByteArrayOutputStream();
+                try {
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+                    byte[] arr = out.toByteArray();
+                    int blockLength = 512;
+                    int blockIndex = 0;
+                    int blockSize = arr.length / blockLength;
+                    int quyu = arr.length / blockLength;
+                    int sum = 0;
+                    while (blockIndex < blockSize) {
+                        dos.write(arr, blockIndex * blockLength, blockLength);
+                        sum += blockLength;
+                        mNetworkClientCallback.onUploadProcess(blockLength, sum, arr.length);
+                        blockIndex++;
+                    }
+                    if (quyu > 0) {
+                        dos.write(arr, blockIndex * blockLength, quyu);
+                        mNetworkClientCallback.onUploadProcess(quyu, arr.length, arr.length);
+                    }
+                    CloseStreamUtil.close(out);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                dos.write(LINEEND.getBytes());
             } else {
                 try {
                     throw new Exception("未知文件类型");
@@ -148,7 +170,9 @@ public class UploadMultipartController implements NetworkController {
                 }
             }
         }
-
+        byte[] end_data=(PREFIX+BOUNDARY+PREFIX+LINEEND).getBytes();
+        dos.write(end_data);
+        dos.flush();
 
     }
 
