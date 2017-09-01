@@ -7,5 +7,4 @@ package com.example.networkutil;
 public class HttpNetWorkController {
 
 
-
 }
