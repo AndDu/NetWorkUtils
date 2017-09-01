@@ -24,6 +24,7 @@ import java.util.UUID;
 public class UpFileController implements NetworkController {
 
 
+    private boolean isConnectEffectived=true;
     private NetworkClientCallback mNetworkClientCallback;
     private String serviceSubmitUrl;  //N
     private HttpURLConnection urlConnection;
@@ -137,7 +138,7 @@ public class UpFileController implements NetworkController {
 
     @Override
     public boolean isConnectEffectived() throws IOException {
-        return urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK;
+        return isConnectEffectived;
     }
 
     @Override
@@ -152,6 +153,7 @@ public class UpFileController implements NetworkController {
 
     @Override
     public void disconnect() {
+        isConnectEffectived=false;
         if (urlConnection != null) {
             urlConnection.disconnect();
         }

@@ -12,26 +12,26 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 public class ThreadPoolController {
 
-    private final static int mThreadNum=5;
-    private ExecutorService executorService=Executors.newFixedThreadPool(mThreadNum);
+    private final static int mThreadNum = 5;
+    private ExecutorService executorService = Executors.newFixedThreadPool(mThreadNum);
     private volatile static ThreadPoolController threadPoolControllerl;
 
 
-    public void submit(TaskController taskController){
+    public void submit(TaskController taskController) {
         RequestServerTask serverTask = new RequestServerTask(taskController);
         executorService.submit(serverTask);
     }
 
-    private ThreadPoolController(){
+    private ThreadPoolController() {
 
     }
 
-    public static ThreadPoolController getInstance(){
+    public static ThreadPoolController getInstance() {
 
-        if (threadPoolControllerl==null){
-            synchronized (ThreadPoolController.class){
-                if (threadPoolControllerl==null){
-                    threadPoolControllerl=new ThreadPoolController();
+        if (threadPoolControllerl == null) {
+            synchronized (ThreadPoolController.class) {
+                if (threadPoolControllerl == null) {
+                    threadPoolControllerl = new ThreadPoolController();
                 }
             }
         }
@@ -39,16 +39,14 @@ public class ThreadPoolController {
     }
 
 
-
-
-    public void cancel(TaskController taskController){
-        if (taskController!=null){
+    public void cancel(TaskController taskController) {
+        if (taskController != null) {
             taskController.cancel();
         }
     }
 
 
-    public static class RequestServerTask implements Runnable{
+    public static class RequestServerTask implements Runnable {
 
         private TaskController taskController;
 
@@ -58,11 +56,10 @@ public class ThreadPoolController {
 
         @Override
         public void run() {
-            Log.d("ThreadPoolController","开始执刑！");
+            Log.d("ThreadPoolController", "开始执刑！");
             taskController.excute();
         }
     }
-
 
 
 }

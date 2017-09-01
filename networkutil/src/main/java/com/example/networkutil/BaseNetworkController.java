@@ -30,7 +30,7 @@ public abstract class BaseNetworkController implements NetworkController {
 
     private NetworkClientCallback mNetworkClientCallback;
     private String mRequestType;
-    private boolean isConnectEffectived;
+    private boolean isConnectEffectived=true;
     //to
     private String requestUrl;
     private HttpURLConnection urlConnection;
@@ -130,7 +130,7 @@ public abstract class BaseNetworkController implements NetworkController {
 
     @Override
     public boolean isConnectEffectived() throws IOException {
-        return isConnectEffectived = urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK;
+        return isConnectEffectived ;
     }
 
     @Override

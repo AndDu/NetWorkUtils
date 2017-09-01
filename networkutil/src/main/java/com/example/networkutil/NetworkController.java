@@ -11,8 +11,8 @@ import java.security.KeyManagementException;
 public interface NetworkController {
 
 
-    String GET = "get";
-    String POST = "post";
+    String GET = "GET";
+    String POST = "POST";
 
     String TYPE_HTTP = "http:";
     String TYPE_HTTPS = "https:";
@@ -21,27 +21,27 @@ public interface NetworkController {
     int READ_TIME = 5 * 1000;
 
 
-    public void setNetworkCallback(NetworkClientCallback callback);
+     void setNetworkCallback(NetworkClientCallback callback);
 
-    public NetworkClientCallback getNetworkCallback();
+     NetworkClientCallback getNetworkCallback();
 
-    public void setRequestType(String type);
+     void setRequestType(String type);
 
-    public void openConnect() throws IOException, KeyManagementException;
+     void openConnect() throws IOException, KeyManagementException;
 
-    public void requestServer() throws IOException;
+     void requestServer() throws IOException;
 
-    public void uploadPostContent(OutputStream outputStream) throws IOException;
+     void uploadPostContent(OutputStream outputStream) throws IOException;
 
-    public boolean isConnectEffectived() throws IOException;
+     boolean isConnectEffectived() throws IOException;
 
-    public void processingDataFromServer() throws IOException;
+     void processingDataFromServer() throws IOException;
 
-    public void disconnect();
+     void disconnect();
 
-    public void close();
+     void close();
 
-    public String getData();
+     String getData();
 
     NetworkController NULL=new NetworkController() {
         @Override
