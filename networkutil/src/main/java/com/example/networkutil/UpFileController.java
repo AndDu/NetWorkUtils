@@ -27,15 +27,15 @@ public class UpFileController implements NetworkController {
     private boolean isConnectEffectived=true;
     private NetworkClientCallback mNetworkClientCallback;
     private String serviceSubmitUrl;  //N
-    private HttpURLConnection urlConnection;
+    protected HttpURLConnection urlConnection;
     private static final int UPFILE_CONNECT_TIME = 40 * 1000;
     private static final int UPFILE_READ_TIME = 40 * 1000;
-    private static final String CHARSET = "utf-8";
+    protected static final String CHARSET = "utf-8";
     protected String CONTENT_TYPE = "multipart/form-data";//内容类型
     protected String BOUNDARY = UUID.randomUUID().toString();//边界标识   随机生成
     private String mLocalFilePath;
     protected ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-    private Map<String, String> mParams;
+    protected Map<String, String> mParams;
     protected String PREFIX = "--";//分割符
     protected String LINEEND = "\r\n"; //回车换行
 

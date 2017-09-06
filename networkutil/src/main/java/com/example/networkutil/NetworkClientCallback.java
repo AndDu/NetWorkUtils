@@ -10,6 +10,8 @@ public interface NetworkClientCallback {
 
      void onFail(Exception e, String message);
 
+
+
     NetworkClientCallback NULL = new NetworkClientCallback() {
         @Override
         public void onDownloadProcess(int readbufferLength,
@@ -28,5 +30,7 @@ public interface NetworkClientCallback {
         @Override
         public void onFail(Exception e, String message) {
         }
+
+
     };
 }

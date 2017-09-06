@@ -11,7 +11,7 @@ public class DeckerUploadServer implements TaskController {
     public DeckerUploadServer(NetworkClient networkClient) {
         this.networkClient = networkClient;
         networkClient.setmRequestType(NetworkClient.POST);
-    }
+}
 
     @Override
     public void cancel() {
