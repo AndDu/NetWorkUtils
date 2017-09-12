@@ -17,7 +17,8 @@ import java.util.Map;
 public class HttpNetWorkController {
 
 
-    //"http://www.i5campus.com:9084/mobile/comment/getComments.do?userId=220&pager.currentPage=1"
+
+
     public static void doGet(String requestUrl, NetworkClientCallback clientCallback) {
         NetworkClient networkClient = new NetworkClient();
         networkClient.setNetworkController(new BaseNetworkController(clientCallback, requestUrl) {

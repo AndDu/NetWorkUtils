@@ -36,7 +36,7 @@ public abstract class BaseNetworkController implements NetworkController {
     private HttpURLConnection urlConnection;
     private OutputStream serverOutputStream;
     private InputStream inputStream;
-    private FileOutputStream fileWrite; //未初始化
+    private FileOutputStream fileWrite;
     private ByteArrayOutputStream byteArrayOutputStream =new ByteArrayOutputStream();
 
 
