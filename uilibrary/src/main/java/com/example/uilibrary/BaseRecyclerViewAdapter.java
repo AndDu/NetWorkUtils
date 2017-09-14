@@ -19,6 +19,7 @@ public abstract class BaseRecyclerViewAdapter<M, H extends BaseRecyclerViewHolde
     protected List<M> list = new ArrayList<>(0);
     protected final LayoutInflater from;
     protected Context context;
+
     protected ChildViewClickListener childViewClickListener;
 
     public BaseRecyclerViewAdapter(Context context) {
