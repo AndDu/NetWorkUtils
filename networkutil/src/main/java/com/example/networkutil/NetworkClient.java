@@ -1,5 +1,7 @@
 package com.example.networkutil;
 
+import com.example.networkutil.ex.SeverExcetion;
+
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -48,7 +50,7 @@ public class NetworkClient {
                 mNetworkController.processingDataFromServer();
                 mNetworkClientCallback.onFinish(mNetworkController.getData());
             } else {
-                mNetworkClientCallback.onFail(null, "服务器处理异常，下载失败");
+                mNetworkClientCallback.onFail(new SeverExcetion(SeverExcetion.SERVER_ERROR), "服务器处理异常，下载失败");
             }
             mNetworkController.close();
         } catch (IOException e) {

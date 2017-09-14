@@ -30,14 +30,13 @@ public abstract class BaseNetworkController implements NetworkController {
 
     private NetworkClientCallback mNetworkClientCallback;
     private String mRequestType;
-    private boolean isConnectEffectived=true;
-    //to
+    private boolean isConnectEffectived = true;
     private String requestUrl;
     private HttpURLConnection urlConnection;
     private OutputStream serverOutputStream;
     private InputStream inputStream;
     private FileOutputStream fileWrite;
-    private ByteArrayOutputStream byteArrayOutputStream =new ByteArrayOutputStream();
+    private ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
 
     public BaseNetworkController(NetworkClientCallback mNetworkClientCallback, String requestUrl) {
@@ -51,6 +50,8 @@ public abstract class BaseNetworkController implements NetworkController {
         this.fileWrite = fileWrite;
     }
 
+
+
     @Override
     public void setNetworkCallback(NetworkClientCallback callback) {
         mNetworkClientCallback = callback;
@@ -59,7 +60,6 @@ public abstract class BaseNetworkController implements NetworkController {
 
     @Override
     public NetworkClientCallback getNetworkCallback() {
-
         return mNetworkClientCallback;
     }
 
@@ -99,17 +99,15 @@ public abstract class BaseNetworkController implements NetworkController {
             }
             /*
             httpUrlConnection.setDoOutput(true);以后就可以使用conn.getOutputStream().write()
-//httpUrlConnection.setDoInput(true);以后就可以使用conn.getInputStream().read();
-//
-//get请求用不到conn.getOutputStream()，因为参数直接追加在地址后面，因此默认是false。
-//post请求（比如：文件上传）需要往服务区传输大量的数据，这些数据是放在http的body里面的，因此需要在建立连接以后，往服务端写数据。
-//
-//因为总是使用conn.getInputStream()获取服务端的响应，因此默认值是true。
+            httpUrlConnection.setDoInput(true);以后就可以使用conn.getInputStream().read();
+            get请求用不到conn.getOutputStream()，因为参数直接追加在地址后面，因此默认是false。
+            post请求（比如：文件上传）需要往服务区传输大量的数据，这些数据是放在http的body里面的，因此需要在建立连接以后，往服务端写数据。
+            因为总是使用conn.getInputStream()获取服务端的响应，因此默认值是true。
              */
 //            urlConnection.setDoInput(true); //默认值是true。
             urlConnection.setUseCaches(false);//默认值是true。
             //This method is used to enable streaming of a HTTP request body without internal buffering, when the content length is not known in advance.
-//            urlConnection.setChunkedStreamingMode(512);
+            urlConnection.setChunkedStreamingMode(512);
             urlConnection.setConnectTimeout(CONNECT_TIME);
             urlConnection.setReadTimeout(READ_TIME);
         }
@@ -125,12 +123,11 @@ public abstract class BaseNetworkController implements NetworkController {
             serverOutputStream.flush();
             CloseStreamUtil.close(serverOutputStream);
         }
-
     }
 
     @Override
     public boolean isConnectEffectived() throws IOException {
-        return isConnectEffectived ;
+        return isConnectEffectived;
     }
 
     @Override
@@ -142,15 +139,15 @@ public abstract class BaseNetworkController implements NetworkController {
             int bufferSum = 0;
             inputStream = urlConnection.getInputStream();
             while (-1 != (bufferSize = inputStream.read(bytes))) {
-                if (fileWrite!=null){
-                    fileWrite.write(bytes,0,bytes.length);
-                }else {
-                    byteArrayOutputStream.write(bytes,0,bytes.length);
+                if (fileWrite != null) {
+                    fileWrite.write(bytes, 0, bytes.length);
+                } else {
+                    byteArrayOutputStream.write(bytes, 0, bytes.length);
                 }
-                bufferSum+=bufferSize;
-                mNetworkClientCallback.onDownloadProcess(bufferSize,bufferSum,contentLength);
+                bufferSum += bufferSize;
+                mNetworkClientCallback.onDownloadProcess(bufferSize, bufferSum, contentLength);
             }
-        }else {
+        } else {
             close();
             throw new IOException();
         }
@@ -159,22 +156,22 @@ public abstract class BaseNetworkController implements NetworkController {
 
     @Override
     public void disconnect() {
-        isConnectEffectived=false;
-        Log.d("network","请求中断 http 连接");
-        if (urlConnection!=null){
+        isConnectEffectived = false;
+        Log.d("network", "请求中断 http 连接");
+        if (urlConnection != null) {
             urlConnection.disconnect();
-            Log.d("network","中断 http 连接");
+            Log.d("network", "中断 http 连接");
         }
         CloseStreamUtil.close(serverOutputStream);
-        if (serverOutputStream!=null){
-            Log.d("network","中断 http serverOutputStream");
+        if (serverOutputStream != null) {
+            Log.d("network", "中断 http serverOutputStream");
         }
 
     }
 
     @Override
     public void close() {
-        if (urlConnection!=null){
+        if (urlConnection != null) {
             urlConnection.disconnect();
         }
         CloseStreamUtil.close(byteArrayOutputStream);

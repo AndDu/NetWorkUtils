@@ -56,6 +56,7 @@ public class LoadingController {
     }
 
     public void cancelLoding() {
+        Thread thread = Thread.currentThread();
         rl_root.removeView(loadingView);
     }
 

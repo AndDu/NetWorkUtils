@@ -1,1 +1,1 @@
-include ':app', ':networkutil'
+include ':app', ':networkutil', ':uilibrary'

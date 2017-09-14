@@ -38,12 +38,14 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onFinish(String content) {
                         loadingController.cancelLoding();
+                        Log.e("",content);
                     }
 
 
                     @Override
                     public void onFail(Exception e, String message) {
                         loadingController.cancelLoding();
+                        Log.e("",e.toString());
                     }
                 });
     }
