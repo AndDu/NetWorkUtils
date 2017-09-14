@@ -37,14 +37,14 @@ public class MainActivity extends AppCompatActivity {
                 new ResponCallback() {
                     @Override
                     public void onFinish(String content) {
-                        loadingController.cancelLoding();
+//                        loadingController.cancelLoding();
                         Log.e("",content);
                     }
 
 
                     @Override
                     public void onFail(Exception e, String message) {
-                        loadingController.cancelLoding();
+//                        loadingController.cancelLoding();
                         Log.e("",e.toString());
                     }
                 });
