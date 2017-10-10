@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_standrd"
+        style="@style/normal_gray"
+        android:padding="13dp"
+        android:text="第一个属性名" />
+
+    <com.yingze.happinessemerchant.view.XCFlowLayout
+        android:id="@+id/xcf_layout"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="5dp"
+        android:layout_height="match_parent">
+
+    </com.yingze.happinessemerchant.view.XCFlowLayout>
+
+    <View
+        style="@style/item_line"
+        android:layout_marginTop="13dp" />
+</LinearLayout>

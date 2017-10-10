@@ -1,1 +1,1 @@
-include ':app', ':networkutil', ':uilibrary'
+include ':app', ':networkutil', ':uilibrary', ':samplemodule'

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:minWidth="50dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/xcf_black_wid"
+    android:orientation="vertical"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="5dp"
+    android:padding="5dp"
+    android:paddingLeft="13dp">
+
+    <TextView
+        android:id="@+id/tv_spec_name"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:textColor="@color/tv_textcolor_yellow"
+        android:layout_height="wrap_content"
+        android:text="大开发" />
+
+</FrameLayout>
