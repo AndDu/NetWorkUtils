@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new TestRecylerView(this);
         mAdapter.addAllLoad(list);
-        recyclerView.addItemDecoration(new Divider(RecyclerView.LayoutManager.));
+        recyclerView.addItemDecoration(new Divider(RecyclerView.LayoutManager,));
         recyclerView.setAdapter((RecyclerView.Adapter) mAdapter.getAdapter());
 
 //        loadingController = new LoadingController(this);

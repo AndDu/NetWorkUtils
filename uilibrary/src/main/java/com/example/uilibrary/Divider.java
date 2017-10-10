@@ -29,6 +29,7 @@ public class Divider extends RecyclerView.ItemDecoration {
     private void setDivider(Drawable divider) {
         this.mDivider = divider;
         if (mDivider == null) {
+
             mDivider = new ColorDrawable(0xffff0000);
         }
         width = mDivider.getIntrinsicWidth();

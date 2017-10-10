@@ -74,6 +74,7 @@ public class ItemDecoration extends RecyclerView.ItemDecoration {
         int bottom = parent.getHeight() - parent.getPaddingBottom();
         final int childCount = parent.getChildCount();
         for (int i = 0; i < childCount; i++) {
+
             final View child = parent.getChildAt(i);
             //获得child的布局信息
             final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
