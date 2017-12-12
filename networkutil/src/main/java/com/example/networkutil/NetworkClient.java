@@ -11,7 +11,7 @@ import java.net.URLConnection;
 import java.security.KeyManagementException;
 
 /**
- * Created by Administrator on 2017/8/10.
+ * Created by Yellow on 2017/8/10.
  */
 
 public class NetworkClient {

@@ -23,7 +23,7 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
 /**
- * Created by Administrator on 2017/8/14.
+ * Created by Yellow on 2017/8/14.
  */
 
 public abstract class BaseNetworkController implements NetworkController {

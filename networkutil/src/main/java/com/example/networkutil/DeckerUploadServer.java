@@ -1,7 +1,7 @@
 package com.example.networkutil;
 
 /**
- * Created by Administrator on 2017/8/16.
+ * Created by Yellow on 2017/8/16.
  */
 
 public class DeckerUploadServer implements TaskController {
