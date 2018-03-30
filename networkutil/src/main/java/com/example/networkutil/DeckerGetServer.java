@@ -9,6 +9,7 @@ public class DeckerGetServer implements TaskController {
 
     private NetworkClient networkClient;
 
+
     public DeckerGetServer(NetworkClient networkClient) {
         this.networkClient = networkClient;
         networkClient.setmRequestType(NetworkClient.GET);
