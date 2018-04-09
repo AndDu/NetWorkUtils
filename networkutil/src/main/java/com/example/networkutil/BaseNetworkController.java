@@ -51,7 +51,6 @@ public abstract class BaseNetworkController implements NetworkController {
     }
 
 
-
     @Override
     public void setNetworkCallback(NetworkClientCallback callback) {
         mNetworkClientCallback = callback;
@@ -86,27 +85,26 @@ public abstract class BaseNetworkController implements NetworkController {
                             return true;
                         }
                     });
-                    urlConnection = (HttpURLConnection) url.openConnection();
+                    urlConnection = (HttpsURLConnection) url.openConnection();
                 } catch (NoSuchAlgorithmException e) {
                     e.printStackTrace();
                 }
             } else {
-                try {
-                    throw new Exception("requestUrl have to startwith http: or https:");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                throw new RuntimeException("requestUrl have to startwith http: or https:");
             }
             /*
             httpUrlConnection.setDoOutput(true);以后就可以使用conn.getOutputStream().write()
             httpUrlConnection.setDoInput(true);以后就可以使用conn.getInputStream().read();
             get请求用不到conn.getOutputStream()，因为参数直接追加在地址后面，因此默认是false。
-            post请求（比如：文件上传）需要往服务区传输大量的数据，这些数据是放在http的body里面的，因此需要在建立连接以后，往服务端写数据。
+            post请求（比如：文件上传）需要往服务端传输大量的数据，这些数据是放在http的body里面的，因此需要在建立连接以后，往服务端写数据。
             因为总是使用conn.getInputStream()获取服务端的响应，因此默认值是true。
              */
 //            urlConnection.setDoInput(true); //默认值是true。
             urlConnection.setUseCaches(false);//默认值是true。
-            //This method is used to enable streaming of a HTTP request body without internal buffering, when the content length is not known in advance.
+
+           /* This method is used to enable streaming of a HTTP request body
+             without internal buffering, when the content length is not known in advance.
+             */
             urlConnection.setChunkedStreamingMode(512);
             urlConnection.setConnectTimeout(CONNECT_TIME);
             urlConnection.setReadTimeout(READ_TIME);

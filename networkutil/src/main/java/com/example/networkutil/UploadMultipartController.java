@@ -163,14 +163,10 @@ public class UploadMultipartController implements NetworkController {
                 }
                 dos.write(LINEEND.getBytes());
             } else {
-                try {
-                    throw new Exception("未知文件类型");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                throw new RuntimeException("未知文件类型");
             }
         }
-        byte[] end_data=(PREFIX+BOUNDARY+PREFIX+LINEEND).getBytes();
+        byte[] end_data = (PREFIX + BOUNDARY + PREFIX + LINEEND).getBytes();
         dos.write(end_data);
         dos.flush();
 
