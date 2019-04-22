@@ -1,1 +1,1 @@
-include ':app', ':networkutil', ':uilibrary', ':samplemodule', ':paylib', ':utils', 'bluetoothutil'
+include ':app', ':networkutil', ':uilibrary', ':samplemodule', ':paylib', ':utils', ':socketest', 'bluetoothutil'
